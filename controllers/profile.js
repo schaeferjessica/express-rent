@@ -12,9 +12,7 @@ router.get('/', (req, res) => {
   res.render('profile')
 })
 // PATCH /
-router.patch('/', (req, res) => {
-  res.render('profile')
-})
+router.patch('/', (req, res) => {})
 
 // export
 module.exports = router

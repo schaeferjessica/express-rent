@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const ObjectId = mongoose.Schema.Types.ObjectId
 
 // bookings moodel
 module.exports = mongoose.model('bookings', {
@@ -20,8 +21,3 @@ module.exports = mongoose.model('bookings', {
     required: true
   }
 })
-
-author
-date
-description
-house
