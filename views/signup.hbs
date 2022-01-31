@@ -1,0 +1,41 @@
+<div
+  class="bg-[url('https://images.unsplash.com/photo-1500285426772-410d8f2243d0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80')] h-screen w-screen bg-cover bg-no-repeat bg-center flex flex-col justify-center items-center">
+
+  <div class="container m-auto">
+    <div class="bg-white p-10 rounded-md mx-4 xl:m-auto xl:max-w-[50%]">
+      <a href="../index.html">
+        <img src="../images/logo-airbnb.png" alt="logo" class="w-28 h-auto m-auto">
+      </a>
+      <!--sign in form-->
+      <form action="#" method="POST">
+
+        <div class="mt-5">
+          <label for="name" class="block text-sm">Full Name</label>
+          <input type="text" name="name" id="name" class="p-2 mt-1 border block w-full rounded">
+        </div>
+
+        <div class="mt-5">
+          <label for="url" class="block text-sm">Photo URL</label>
+          <input type="text" name="url" id="url" class="p-2 mt-1 border block w-full rounded" placeholder="https://">
+        </div>
+
+        <div class="mt-5">
+          <label for="email-address" class="block text-sm">Email</label>
+          <input type="email" name="email-address" id="email-address" autocomplete="email" required
+            class="p-2 mt-1 border block w-full rounded">
+        </div>
+
+        <div class="mt-5">
+          <label for="password" class="block text-sm">Password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" required
+            class="p-2 mt-1 border block w-full rounded">
+        </div>
+
+        <button type="submit" class="mt-5 button">Signup</button>
+      </form>
+      <p class="mt-5 inline-block text-sm text-slate-600">already have an account? <a href="./login.html"
+          class="mt-5 inline-block text-sm border-b-2 border-blue-200">login</a></p>
+    </div>
+  </div>
+
+</div>

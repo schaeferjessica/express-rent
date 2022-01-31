@@ -1,0 +1,66 @@
+<div class="container mx-auto pl-8 pr-8">
+  <!--nav-->
+  {{> navigation }}
+
+  <div class="xl:max-w-[60%] mx-auto">
+    <h1>Edit House</h1>
+
+    <!--form-->
+    <form action="#" method="POST" class="mt-5">
+      <div class="mt-5">
+        <label for="title" class="block">Short Title</label>
+        <input type="text" name="title" id="title" class="p-2 mt-2 block w-full border border-gray-400 rounded"
+          required>
+      </div>
+
+      <div class="mt-5">
+        <label for="description" class="block">Description</label>
+        <textarea name="description" id="description" class="p-2 mt-2 block w-full border border-gray-400 rounded"
+          required minlength="100"></textarea>
+      </div>
+
+      <div class="mt-5">
+        <label for="quantity" class="block">Number of Rooms</label>
+        <input type="nummber" name="quantity" id="quantity" min="1" max="10"
+          class="p-2 mt-2 block w-full border border-gray-400 rounded" required>
+      </div>
+
+      <div class="mt-5">
+        <label for="location" class="block">Location</label>
+        <select name="location" id="location"
+          class="p-2 mt-2 block w-full border border-gray-400 rounded bg-white h-10">
+          <option value="TH">Thailand</option>
+          <option value="EN">England</option>
+          <option value="DE">Germany</option>
+        </select>
+      </div>
+
+      <div class="mt-5">
+        <label for="price" class="block">Price Per Night</label>
+        <input type="nummber" name="price" id="price" min="1"
+          class="p-2 mt-2 block w-full border border-gray-400 rounded" required>
+      </div>
+
+      <fieldset class="mt-5">
+        <legend class="block">Photo URLS:</legend>
+        <label for="url-1" class="sr-only">Photo URL</label>
+        <input type="text" name="url-1" id="url-1" class="p-2 mt-2 block w-full border border-gray-400 rounded"
+          placeholder="https://">
+
+        <label for="url-2" class="sr-only">Photo URL</label>
+        <input type="text" name="url-2" id="url-2" class="p-2 mt-2 block w-full border border-gray-400 rounded"
+          placeholder="https://">
+
+        <label for="url-3" class="sr-only">Photo URL</label>
+        <input type="text" name="url-3" id="url-3" class="p-2 mt-2 block w-full border border-gray-400 rounded"
+          placeholder="https://">
+      </fieldset>
+
+      <button type="submit" class="button mt-5">Save Changes</button>
+    </form>
+    <button class="button mt-2">Delete House</button>
+  </div>
+
+  <!--footer-->
+  {{> footer }}
+</div>

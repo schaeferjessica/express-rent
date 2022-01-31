@@ -1,0 +1,150 @@
+<div class="container mx-auto pl-8 pr-8">
+  <!--nav-->
+  {{> navigation }}
+
+  <!--filter-->
+  <div class="mt-10">
+    <form action="#" method="POST" class="flex items-center flex-wrap">
+      <div class="flex mr-2 mt-2">
+        <button type="button" class="bg-white border border-gray-300 rounded-l-lg pl-3 pr-3 text-left cursor-pointer">
+          <i class="fas fa-ghost text-sm"></i>
+        </button>
+        <label for="location" class="sr-only">Location:</label>
+        <select name="location" id="location"
+          class="bg-white border border-gray-300 rounded-r-lg pl-3 pr-10 pt-2 pb-2 text-left cursor-pointer text-base leading-5">
+          <option value="location" selected disabled hidden>Location:</option>
+          <option value="TH">Thailand</option>
+          <option value="EN">England</option>
+          <option value="DE">Germany</option>
+        </select>
+      </div>
+
+      <div class="mr-2 mt-2">
+        <label for="rooms" class="sr-only">Rooms:</label>
+        <select name="rooms" id="rooms"
+          class="bg-white border border-gray-300 rounded-md pl-3 pr-10 pt-2 pb-2 text-left cursor-pointer text-base leading-5">
+          <option value="location" selected disabled hidden>Rooms:</option>
+          <option value="1">1 Room</option>
+          <option value="2">2 Rooms</option>
+          <option value="3">3 Rooms</option>
+        </select>
+      </div>
+
+      <div class="mr-2 mt-2">
+        <label for="search-id" class="sr-only">Suchfeld</label>
+        <input id="search-id" name="search-name"
+          class="bg-white border border-gray-300 rounded-md pl-3 pr-10 pt-2 pb-2 text-left cursor-pointer text-base leading-5">
+      </div>
+
+      <button type="submit" class="button mt-2">Search</button>
+    </form>
+  </div>
+
+  <!--grid-->
+  <ul class="mt-10 grid grid-cols-1 md:grid-cols-2 md:gap-4 lg:grid-cols-3 xl:grid-cols-4 xl:gap-6">
+    <li class="border border-blue-200 rounded">
+      <a href="./house.html">
+        <img class="aspect-video w-full object-cover"
+          src="https://images.unsplash.com/photo-1532323544230-7191fd51bc1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2574&q=80"
+          alt="house image">
+      </a>
+
+      <div class="p-2">
+        <span>Koh Samui, 5 Rooms</span>
+        <h2 class="mt-2"><a href="./house.html" class="link">Villa House</a></h2>
+        <div class="flex aline-center justify-between mt-2">
+          <span>3 Reviews</span>
+          <span>350$ a night</span>
+        </div>
+      </div>
+    </li>
+
+    <li class="border border-blue-200 rounded">
+      <a href="./house.html">
+        <img class="aspect-video w-full object-cover"
+          src="https://images.unsplash.com/photo-1522444195799-478538b28823?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+          alt="house image">
+      </a>
+
+      <div class="p-2">
+        <span>Koh Samui, 5 Rooms</span>
+        <h2 class="mt-2"><a href="./house.html" class="link">Villa House</a></h2>
+        <div class="flex aline-center justify-between mt-2">
+          <span>3 Reviews</span>
+          <span>350$ a night</span>
+        </div>
+      </div>
+    </li>
+
+    <li class="border border-blue-200 rounded">
+      <a href="./house.html">
+        <img class="aspect-video w-full object-cover"
+          src="https://images.unsplash.com/photo-1616046229478-9901c5536a45?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+          alt="house image">
+      </a>
+
+      <div class="p-2">
+        <span>Koh Samui, 5 Rooms</span>
+        <h2 class="mt-2"><a href="./house.html" class="link">Villa House</a></h2>
+        <div class="flex aline-center justify-between mt-2">
+          <span>3 Reviews</span>
+          <span>350$ a night</span>
+        </div>
+      </div>
+    </li>
+
+    <li class="border border-blue-200 rounded">
+      <a href="./house.html">
+        <img class="aspect-video w-full object-cover"
+          src="https://images.unsplash.com/photo-1606788075819-9574a6edfab3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80"
+          alt="house image">
+      </a>
+
+      <div class="p-2">
+        <span>Koh Samui, 5 Rooms</span>
+        <h2 class="mt-2"><a href="./house.html" class="link">Villa House</a></h2>
+        <div class="flex aline-center justify-between mt-2">
+          <span>3 Reviews</span>
+          <span>350$ a night</span>
+        </div>
+      </div>
+    </li>
+
+    <li class="border border-blue-200 rounded">
+      <a href="./house.html">
+        <img class="aspect-video w-full object-cover"
+          src="https://images.unsplash.com/photo-1514894780887-121968d00567?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1473&q=80"
+          alt="house image">
+      </a>
+
+      <div class="p-2">
+        <span>Koh Samui, 5 Rooms</span>
+        <h2 class="mt-2"><a href="./house.html" class="link">Villa House</a></h2>
+        <div class="flex aline-center justify-between mt-2">
+          <span>3 Reviews</span>
+          <span>350$ a night</span>
+        </div>
+      </div>
+    </li>
+
+    <li class="border border-gray-300 rounded">
+      <a href="./house.html" class="link">
+        <img class="aspect-video w-full object-cover"
+          src="https://images.unsplash.com/photo-1550254478-ead40cc54513?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=661&q=80"
+          alt="house image">
+      </a>
+
+      <div class="p-2">
+        <span>Koh Samui, 5 Rooms</span>
+        <h2><a href="./house.html" class="link">Villa House</a></h2>
+        <div class="flex aline-center justify-between">
+          <span>3 Reviews</span>
+          <span>350$ a night</span>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <!--footer-->
+  {{> footer }}
+</div>
