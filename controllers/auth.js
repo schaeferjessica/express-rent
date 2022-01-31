@@ -4,7 +4,6 @@ const router = express.Router()
 
 const async = require('hbs/lib/async');
 
-
 // views
 
 //GET /login
@@ -16,17 +15,11 @@ router.get('/signup', (req, res) => {
   res.render('signup')
 })
 //POST /login
-router.post('/login', (req, res) => {
-  res.send('login')
-})
+router.post('/login', (req, res) => {})
 //POST /signup
-router.post('/signup', (req, res) => {
-  res.send('signup')
-})
+router.post('/signup', (req, res) => {})
 //GET /logout
-router.get('/logout', (req, res) => {
-  res.send('logout')
-})
+router.get('/logout', (req, res) => {})
 
 // export module
 module.exports = router

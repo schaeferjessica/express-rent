@@ -9,11 +9,11 @@ const async = require('hbs/lib/async');
 
 // GET /
 router.get('/', (req, res) => {
-  res.send('profile')
+  res.render('profile')
 })
 // PATCH /
 router.patch('/', (req, res) => {
-  res.send('profile')
+  res.render('profile')
 })
 
 // export

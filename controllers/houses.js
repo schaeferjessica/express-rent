@@ -16,25 +16,18 @@ router.get('/create', (req, res) => {
 })
 // GET /:id
 router.get('/:id', (req, res) => {
-  res.send('houses/one')
+  res.render('houses/one')
 })
 // GET /:id/edit
 router.get('/:id/edit', (req, res) => {
   res.render('houses/edit')
 })
 // POST /
-router.post('/', (req, res) => {
-  res.send('houses/list')
-})
+router.post('/', (req, res) => {})
 // PATCH /:id
-router.patch('/:id', (req, res) => {
-  res.send('houses')
-})
+router.patch('/:id', (req, res) => {})
 // DELETE /:id
-router.delete('/:id', (req, res) => {
-  res.send('houses')
-})
-
+router.delete('/:id', (req, res) => {})
 
 // export
 module.exports = router

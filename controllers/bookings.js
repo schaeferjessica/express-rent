@@ -7,9 +7,7 @@ const async = require('hbs/lib/async');
 // views
 
 // POST /
-router.post('/', (req, res) => {
-  res.send('bookings')
-})
+router.post('/', (req, res) => {})
 
 // export
 module.exports = router
