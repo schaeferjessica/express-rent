@@ -24,9 +24,15 @@ router.get('/create', (req, res) => {
   } catch (err) { next(err) }
 })
 // GET /:id
-router.get('/:id', (req, res) => {
-  res.render('houses/one' , {user: req.user})
+router.get('/:id', (req, res, next) => {
+  try {
+    let findHouseWithID = Houses.findOne({_id: req.params.id})
+    findHouseWithID.then(house => {
+      res.render('houses/one' , {user: req.user, house: house})
+    }) 
+  } catch (err) { next(err) }
 })
+
 // GET /:id/edit
 router.get('/:id/edit', (req, res) => {
   res.render('houses/edit', {user: req.user})
@@ -36,7 +42,6 @@ router.post('/', async (req, res, next) => {
   try {
     if (req.body) {
       const house = await Houses.create(req.body)
-      console.log(house);
       res.redirect(`/houses/${house._id}`)
     } else {
       res.render('houses/create', { error: 'please fill out the form' })
