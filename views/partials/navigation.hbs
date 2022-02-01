@@ -1,8 +1,29 @@
+{{#if user }}
+
+<!--isLogin-->
+<nav class="flex flex-row justify-between items-center my-4 mx-4">
+  <a href="/">
+    <img src="../images/logo-airbnb.png" alt="logo" class="w-28 h-auto">
+  </a>
+  <div class="flex">
+    <a href="/profile" class="flex button">
+      <img class="inline-block h-6 w-6 rounded-full ring-1 ring-white" src="{{ user.avatar }}" alt="avatar">
+      <span class="ml-1.5">{{ user.name }}</span>
+    </a>
+    <a href="/auth/logout" class="button ml-1.5">Logout</a>
+  </div>
+</nav>
+
+{{else}}
+
+<!--isLogout-->
 <nav class="flex flex-row justify-between items-center mt-10">
   <a href="/">
     <img src="../images/logo-airbnb.png" alt="logo" class="w-28 h-auto">
   </a>
   <div class="flex">
-    <button class="button ml-1.5">Login</button>
+    <a href="/auth/login" class="button ml-1.5">Login</a>
   </div>
 </nav>
+
+{{/if}}

@@ -1,17 +1,5 @@
 <div class="container mx-auto pl-8 pr-8">
-  <nav class="flex flex-row justify-between items-center my-4 mx-4">
-    <a href="/">
-      <img src="../images/logo-airbnb.png" alt="logo" class="w-28 h-auto">
-    </a>
-    <div class="flex">
-      <a href="/profile" class="flex button">
-        <img class="inline-block h-6 w-6 rounded-full ring-1 ring-white"
-          src="https://avatars.githubusercontent.com/u/53295035?v=4" alt="avatar">
-        <span class="ml-1.5">Jessica Schäfer</span>
-      </a>
-      <a href="/" class="button ml-1.5">Logout</a>
-    </div>
-  </nav>
+  {{> navigation }}
 
   <div class="mt-10 grid grid-cols-1 lg:grid-cols-3 lg:gap-10">
     <!--form-->
@@ -26,8 +14,8 @@
         </div>
 
         <div class="mt-5">
-          <label for="email-address" class="block">Email address</label>
-          <input type="email" name="email-address" id="email-address" autocomplete="email"
+          <label for="email" class="block">Email address</label>
+          <input type="email" name="email" id="email" autocomplete="email"
             class="p-2 mt-1 block w-full border border-gray-400 rounded">
         </div>
 
