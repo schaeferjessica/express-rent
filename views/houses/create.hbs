@@ -5,7 +5,7 @@
   <div class="xl:max-w-[70%] mx-auto">
     <h1>List a House</h1>
     <!--form-->
-    <form action="#" method="POST" class="mt-5">
+    <form action="/houses" method="POST" class="mt-5">
       <div class="mt-5">
         <label for="title" class="block">Short Title</label>
         <input type="text" name="title" id="title" class="p-2 mt-2 block w-full border border-gray-400 rounded"
@@ -19,8 +19,8 @@
       </div>
 
       <div class="mt-5">
-        <label for="quantity" class="block">Number of Rooms</label>
-        <input type="nummber" name="quantity" id="quantity" min="1" max="10"
+        <label for="rooms" class="block">Number of Rooms</label>
+        <input type="nummber" name="rooms" id="rooms" min="1" max="10"
           class="p-2 mt-2 block w-full border border-gray-400 rounde out-of-range:border-red-300" required>
       </div>
 
@@ -42,15 +42,15 @@
       <fieldset class="mt-5">
         <legend class="block">Photo URLS:</legend>
         <label for="url-1" class="sr-only">Photo URL</label>
-        <input type="text" name="url-1" id="url-1" class="p-2 mt-2 block w-full border border-gray-400 rounde"
+        <input type="text" name="photos" id="url-1" class="p-2 mt-2 block w-full border border-gray-400 rounde"
           placeholder="https://">
 
         <label for="url-2" class="sr-only">Photo URL</label>
-        <input type="text" name="url-2" id="url-2" class="p-2 mt-2 block w-full border border-gray-400 rounde"
+        <input type="text" name="photos" id="url-2" class="p-2 mt-2 block w-full border border-gray-400 rounde"
           placeholder="https://">
 
         <label for="url-3" class="sr-only">Photo URL</label>
-        <input type="text" name="url-3" id="url-3" class="p-2 mt-2 block w-full border border-gray-400 rounde"
+        <input type="text" name="photos" id="url-3" class="p-2 mt-2 block w-full border border-gray-400 rounde"
           placeholder="https://">
       </fieldset>
 

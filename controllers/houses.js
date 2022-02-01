@@ -6,6 +6,7 @@ const router = express.Router()
 // Modules
 
 const Users = require('../models/users')
+const Houses = require('../models/houses')
 
 // Routes (views)
 
@@ -31,7 +32,17 @@ router.get('/:id/edit', (req, res) => {
   res.render('houses/edit', {user: req.user})
 })
 // POST /
-router.post('/', (req, res) => {})
+router.post('/', async (req, res, next) => {
+  try {
+    if (req.body) {
+      const house = await Houses.create(req.body)
+      console.log(house);
+      res.redirect(`/houses/${house._id}`)
+    } else {
+      res.render('houses/create', { error: 'please fill out the form' })
+    }
+  } catch (err) { next(err) }
+})
 // PATCH /:id
 router.patch('/:id', (req, res) => {})
 // DELETE /:id
