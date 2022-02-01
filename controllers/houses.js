@@ -21,11 +21,11 @@ router.get('/create', (req, res) => {
 })
 // GET /:id
 router.get('/:id', (req, res) => {
-  res.render('houses/one')
+  res.render('houses/one' , {user: req.user})
 })
 // GET /:id/edit
 router.get('/:id/edit', (req, res) => {
-  res.render('houses/edit')
+  res.render('houses/edit', {user: req.user})
 })
 // POST /
 router.post('/', (req, res) => {})
