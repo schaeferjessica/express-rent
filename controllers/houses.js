@@ -2,8 +2,6 @@
 const express = require('express')
 const router = express.Router()
 
-const async = require('hbs/lib/async');
-
 // views
 
 // GET /
@@ -12,7 +10,7 @@ router.get('/', (req, res) => {
 })
 // GET /create
 router.get('/create', (req, res) => {
-  res.render('houses/create')
+  if (!req.isAuthenticated()) { res.redirect('/auth/login') } else {  res.render('houses/create') }
 })
 // GET /:id
 router.get('/:id', (req, res) => {
