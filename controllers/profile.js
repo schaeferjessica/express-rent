@@ -5,7 +5,7 @@ const router = express.Router()
 
 const async = require('hbs/lib/async');
 
-// views
+// Routes (views)
 
 // GET /
 router.get('/', (req, res) => {

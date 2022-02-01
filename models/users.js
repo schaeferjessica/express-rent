@@ -5,8 +5,9 @@ const mongoose = require('mongoose')
 // users moodel
 
 module.exports = mongoose.model('users', {
-  avatar: {
-    type: String
+  url: {
+    type: String,
+    required: true
   },
   email: {
     type: String,

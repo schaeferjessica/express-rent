@@ -2,7 +2,7 @@
 const express = require('express')
 const router = express.Router()
 
-// views
+// Routes (views)
 
 // POST /
 router.post('/', (req, res) => {})

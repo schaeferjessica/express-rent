@@ -2,7 +2,7 @@
 const express = require('express')
 const router = express.Router()
 
-// views
+// Routes (views)
 
 // GET /houses
 router.get('/', (req, res) => {

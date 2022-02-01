@@ -23,19 +23,14 @@ router.get('/signup', (req, res) => {
 router.post('/login', async (req, res, next) => {
   try {
     if (req.body.email && req.body.password) {
-      const user = await Users.findOne({ email: req.body.email })
+      const user = await Users.findOne({ email: req.body.email, password: req.body.password })
       if (user) {
-        if (user.password === req.body.password) {
-          req.session.user = user
-          res.redirect('/')
-        } else {
-          res.render('login', { error: 'Incorrect password'})
-        }
+        req.login(user, err => { if (err) { next(err) } else { res.redirect('/') } })
       } else {
         res.render('login', { error: 'User not found' })
       }
     } else {
-      res.render('login', { error: 'Please enter an email and password' })
+      res.render('login', { error: 'Please enter an email and password'})
     }
   } catch (err) { next(err) }
 })
@@ -50,7 +45,7 @@ router.post('/signup', (req, res) => {
         password: req.body.password
       })
       .then(user => {
-        req.session.user = user
+        req.session.user = user 
         res.redirect('/')
       })
     } else {

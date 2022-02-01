@@ -1,12 +1,19 @@
 // import packages
 const express = require('express')
+const users = require('../models/users')
 const router = express.Router()
 
-// views
+// Modules
+
+const Users = require('../models/users')
+
+// Routes (views)
 
 // GET /
 router.get('/', (req, res) => {
-  res.render('houses/list')
+  try {
+    res.render('houses/list', {user: req.user})
+  } catch (err) { next(err) }
 })
 // GET /create
 router.get('/create', (req, res) => {
