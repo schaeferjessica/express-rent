@@ -17,7 +17,10 @@ router.get('/', (req, res) => {
 })
 // GET /create
 router.get('/create', (req, res) => {
-  if (!req.isAuthenticated()) { res.redirect('/auth/login') } else {  res.render('houses/create') }
+  try {
+    res.render('houses/create', {user: req.user})
+    if (!req.isAuthenticated()) { res.redirect('/auth/login')} else {  res.render('houses/create') }
+  } catch (err) { next(err) }
 })
 // GET /:id
 router.get('/:id', (req, res) => {
