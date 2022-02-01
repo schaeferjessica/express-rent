@@ -5,56 +5,14 @@
   <!--gallery-->
   <div class="grid sm:grid-cols-2 grid-cols-1 gap-4 mt-10">
     <div>
-      <img class="aspect-video w-full h-full object-cover"
-        src="https://images.unsplash.com/photo-1514894780887-121968d00567?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1473&q=80"
-        alt="living room">
+      <img class="aspect-video w-full h-full object-cover" src="{{ house.photos }}" alt="">
     </div>
     <ul class="grid grid-cols-3 gap-4">
+      {{#each images as |image|}}
       <li>
-        <img class="aspect-video w-full object-cover"
-          src="https://images.unsplash.com/photo-1550254478-ead40cc54513?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=661&q=80"
-          alt="living room">
+        <img class="aspect-video w-full object-cover" src="{{ image.house.photos }}" alt="">
       </li>
-      <li>
-        <img class="aspect-video w-full object-cover"
-          src="https://images.unsplash.com/photo-1616046229478-9901c5536a45?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-          alt="living room">
-      </li>
-      <li>
-        <img class="aspect-video w-full object-cover"
-          src="https://images.unsplash.com/photo-1522444195799-478538b28823?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-          alt="living room">
-      </li>
-      <li>
-        <img class="aspect-video w-full object-cover"
-          src="https://images.unsplash.com/photo-1532323544230-7191fd51bc1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2574&q=80"
-          alt="living room">
-      </li>
-      <li>
-        <img class="aspect-video w-full object-cover"
-          src="https://images.unsplash.com/photo-1479064312651-24524fb55c0e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-          alt="living room">
-      </li>
-      <li>
-        <img class="aspect-video w-full object-cover"
-          src="https://images.unsplash.com/photo-1611269154421-4e27233ac5c7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80"
-          alt="living room">
-      </li>
-      <li>
-        <img class="aspect-video w-full object-cover"
-          src="https://images.unsplash.com/photo-1571387384064-ed3f73470065?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-          alt="living room">
-      </li>
-      <li>
-        <img class="aspect-video w-full object-cover"
-          src="https://images.unsplash.com/photo-1501820488136-72669149e0d4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-          alt="living room">
-      </li>
-      <li class="item">
-        <img class="aspect-video w-full object-cover"
-          src="https://images.unsplash.com/photo-1629359329133-8b4c26d396cf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-          alt="living room">
-      </li>
+      {{/each}}
     </ul>
   </div>
 
@@ -63,7 +21,7 @@
     <div class="sm:col-span-2">
       <h1 class="mt-10">{{ house.title }}</h1>
 
-      <span>Koh Samui, 5 Rooms</span>
+      <span>{{ house.location }}, {{ house.rooms }} Rooms</span>
       <div class="flex items-center mt-5">
         <img class="inline-block h-16 w-16 rounded-full ring-1 ring-white"
           src="https://avatars.githubusercontent.com/u/53295035?v=4" alt="avatar">
@@ -72,9 +30,7 @@
           <h2 class="block">Jessica Schaefer</h2>
         </div>
       </div>
-      <p class="mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis voluptatibus rem, suscipit
-        quibusdam cumque voluptate laboriosam blanditiis soluta, voluptatum architecto quaerat tempore minus in unde
-        facilis impedit quae? Sunt, recusandae.</p>
+      <p class="mt-5">{{ house.description }}</p>
 
       <h2 class="mt-10">2 Reviews</h2>
       <form action="#" method="POST">
@@ -100,7 +56,7 @@
 
     <div class="sm:col-span-1">
       <div class="p-2 mt-4 border block w-full border-blue-200 rounded">
-        <h3>350$ a night</h3>
+        <h3>{{ house.price }}$ a night</h3>
         <small class="block">0 reviews</small>
         <form action="#" method="POST">
           <label for="message" class="sr-only">Message the Host:</label>
