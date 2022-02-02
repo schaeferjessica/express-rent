@@ -12,10 +12,12 @@ const Houses = require('../models/houses')
 // Routes (views)
 
 // GET /
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   try {
-    //let houses = Houses.find(req.query).sort('-price')
-    res.render('houses/list', {user: req.user})
+    // get all houses and .sort('-price')
+    let houses = await Houses.find({})
+    console.log(houses)
+    res.render('houses/list', {user: req.user, houses})
   } catch (err) { next(err) }
 })
 // GET /create
@@ -50,7 +52,7 @@ router.post('/', async (req, res, next) => {
       req.body.host = req.user._id  
       // create a new house
       let house = await Houses.create(req.body)   
-      res.redirect(`/houses/${house._id}`)  
+      res.redirect(`/houses/${house._id}`)
     }
   } catch (err) { next(err) }
 })
