@@ -4,11 +4,6 @@ const ObjectId = mongoose.Schema.Types.ObjectId
 // houses moodel
 
 module.exports = mongoose.model('houses', {
-  //host: {
-  //  type: ObjectId,
-  //  ref: 'users',
-  //  required: true
-  //},
   title: {
     type: String,
     required: true
@@ -32,6 +27,11 @@ module.exports = mongoose.model('houses', {
   },
   rooms: {
     type: Number,
+    required: true
+  },
+  host: {
+    type: ObjectId,
+    ref: 'users',
     required: true
   }
 })
