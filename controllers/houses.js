@@ -7,12 +7,14 @@ const router = express.Router()
 
 const Users = require('../models/users')
 const Houses = require('../models/houses')
+const async = require('hbs/lib/async')
 
 // Routes (views)
 
 // GET /
 router.get('/', (req, res) => {
   try {
+  let houses = Houses.find(req.query).sort('-price')
     res.render('houses/list', {user: req.user})
   } catch (err) { next(err) }
 })
@@ -24,12 +26,11 @@ router.get('/create', (req, res) => {
   } catch (err) { next(err) }
 })
 // GET /:id
-router.get('/:id', (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   try {
-    let findHouseWithID = Houses.findOne({_id: req.params.id})
-    findHouseWithID.then(house => {
-      res.render('houses/one' , {user: req.user, house: house})
-    }) 
+    // find house by id && populate host
+    let house = await Houses.findById(req.params.id).populate('host') 
+    res.render('houses/one', {house: house, user: req.user})
   } catch (err) { next(err) }
 })
 
@@ -40,11 +41,15 @@ router.get('/:id/edit', (req, res) => {
 // POST /
 router.post('/', async (req, res, next) => {
   try {
-    if (req.body) {
-      const house = await Houses.create(req.body)
-      res.redirect(`/houses/${house._id}`)
+    if (!req.isAuthenticated) {
+      // if logged in, create a new house
+      res.redirect('/auth/login')
     } else {
-      res.render('houses/create', { error: 'please fill out the form' })
+      // create a new house
+      let house = await Houses.create(req.body)   
+      // add the user to the house
+      req.body.host = req.user._id  
+      res.redirect(`/houses/${house._id}`)  
     }
   } catch (err) { next(err) }
 })
