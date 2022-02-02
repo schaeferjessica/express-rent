@@ -14,10 +14,20 @@ const Houses = require('../models/houses')
 // GET /
 router.get('/', async (req, res) => {
   try {
-    // get all houses and .sort('-price')
-    let houses = await Houses.find({})
-    console.log(houses)
+    //const houses = await Houses.find({})
+    let obj = (req.query)
+    for (p in obj) {
+      if(`${obj[p]}` == "") {
+        delete obj[p]
+      }
+    }
+    let query = { $and: [{}, obj] }
+    for (p in obj) {
+      query[`${p}`] = obj[`${p}`]
+    } 
+    houses = await Houses.find(query)
     res.render('houses/list', {user: req.user, houses})
+
   } catch (err) { next(err) }
 })
 // GET /create
