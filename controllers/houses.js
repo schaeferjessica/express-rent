@@ -82,8 +82,7 @@ router.delete('/:id', async (req, res) => {
   if(!req.isAuthenticated()) {
     res.redirect('/auth/login')
   } else {
-    let deleteHouse = await Houses.findByIdAndDelete(req.params.id)
-    console.log(req.params.id)
+    await Houses.findByIdAndDelete(req.params.id)
     res.redirect('/profile')
   }
 })
