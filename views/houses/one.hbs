@@ -23,8 +23,7 @@
 
       <span>{{ house.location }}, {{ house.rooms }} Rooms</span>
       <div class="flex items-center mt-5">
-        <img class="inline-block h-16 w-16 rounded-full ring-1 ring-white"
-          src="https://avatars.githubusercontent.com/u/53295035?v=4" alt="avatar">
+        <img class="inline-block h-16 w-16 rounded-full ring-1 ring-white" src="{{house.host.url}}" alt="avatar">
         <div class="ml-4">
           <small class="block">hosted by</small>
           <h2 class="block">{{ house.host.name }}</h2>
@@ -33,7 +32,7 @@
       <p class="mt-5">{{ house.description }}</p>
 
       <h2 class="mt-10">2 Reviews</h2>
-      <form action="#" method="POST">
+      <form action="/bookings" method="POST">
         <label for="happy">
           <input type="radio" id="happy" name="radio" value="radiobox"
             class="appearance-none checked:bg-blue-200 p-2 mt-4 border border-blue-200 rounded">
@@ -55,35 +54,38 @@
     </div>
 
     <div class="sm:col-span-1">
-      <div class="p-2 mt-4 border block w-full border-blue-200 rounded">
-        <h3>{{ house.price }}$ a night</h3>
-        <small class="block">0 reviews</small>
-        <form action="#" method="POST">
-          <label for="message" class="sr-only">Message the Host:</label>
-          <textarea name="message" id="message" class="p-2 mt-4 border block w-full border-blue-200 rounded h-28"
-            required minlength="100">message the host...</textarea>
-          <button type="submit" class="button mt-5">Submit</button>
-        </form>
-      </div>
-
+      {{#if booking }}
       <div class="p-2 mt-4 border block w-full border-blue-200 rounded">
         <h3>350$ a night</h3>
         <small class="block">1 reviews</small>
         <div class="sm:col-span-1 p-2 mt-4 border block w-full bg-blue-200 rounded">
           <span>350$ a night</span>
           <span class="block">Thank you</span>
-          <time datetime="2008-02-14 20:00" class="text-xs text-gray-500">14 Fet 2008 20:00</time>
+          <time datetime="2008-02-14 20:00" class="text-xs text-gray-500">{{house.date}}</time>
         </div>
       </div>
+      {{else}}
+      <div class="p-2 mt-4 border block w-full border-blue-200 rounded">
+        <h3>{{ house.price }}$ a night</h3>
+        <small class="block">0 reviews</small>
+        <form action="/houses/{{house._id}}" method="POST">
+          <label for="message" class="sr-only">Message the Host:</label>
+          <textarea name="message" id="message" class="p-2 mt-4 border block w-full border-blue-200 rounded h-28"
+            required minlength="100" type="hidden" value="{{house._id}}">message the host...</textarea>
+          <button type="submit" class="button mt-5">Submit</button>
+        </form>
+      </div>
+      {{/if}}
     </div>
 
     <!--list: review-->
     <ul class="mt-10 sm:col-span-2">
+      {{#each reviews as |review|}}
       <li class="mt-5 p-2 border w-full border-blue-200 rounded">
         <div class="flex items-center">
           <img class="h-12 w-12 rounded-full" src="https://avatars.githubusercontent.com/u/53295035?v=4" alt="avatar">
           <div class="ml-4">
-            <time datetime="2008-02-14 20:00" class="text-xs text-gray-500">14 Fet 2008 20:00</time>
+            <time datetime="2008-02-14 20:00" class="text-xs text-gray-500">{{review.date}}</time>
             <h2>Nilin</h2>
           </div>
         </div>
@@ -91,19 +93,7 @@
           doloribus quia possimus nihil exercitationem. Nesciunt nobis maiores eveniet consectetur quia distinctio aut
           repellat quas suscipit corrupti!</p>
       </li>
-
-      <li class="mt-5 p-2 border w-full border-blue-200 rounded">
-        <div class="flex items-center">
-          <img class="h-12 w-12 rounded-full" src="https://avatars.githubusercontent.com/u/53295035?v=4" alt="avatar">
-          <div class="ml-4">
-            <time datetime="2008-02-14 20:00" class="text-xs text-gray-500">14 Fet 2008 20:00</time>
-            <h2>Nele</h2>
-          </div>
-        </div>
-        <p class="mt-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum eum officiis saepe numquam
-          doloribus quia possimus nihil exercitationem. Nesciunt nobis maiores eveniet consectetur quia distinctio aut
-          repellat quas suscipit corrupti!</p>
-      </li>
+      {{/each}}
     </ul>
   </div>
 

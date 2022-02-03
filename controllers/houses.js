@@ -3,11 +3,13 @@ const express = require('express')
 const users = require('../models/users')
 const router = express.Router()
 const async = require('hbs/lib/async')
+const moment = require('moment')
 
 // Modules
 
 const Users = require('../models/users')
 const Houses = require('../models/houses')
+const Bookings = require('../models/bookings')
 
 // Routes (views)
 
@@ -21,11 +23,13 @@ router.get('/', async (req, res) => {
         delete obj[p]
       }
     }
+    // default query
     let query = { $and: [{}, obj] }
-    for (p in obj) {
+    for (p in obj) { 
+      // add query for each property
       query[`${p}`] = obj[`${p}`]
-    } 
-    houses = await Houses.find(query)
+    }
+    let houses = await Houses.find(query)
     res.render('houses/list', {user: req.user, houses})
 
   } catch (err) { next(err) }
@@ -42,8 +46,13 @@ router.get('/:id', async (req, res, next) => {
   try {
     // find house by id && populate host
     let house = await Houses.findById(req.params.id).populate('host')
-    console.log(house)
     res.render('houses/one', {house: house, user: req.user})
+    if (req.user){
+      booking = await Bookings.findOne({house: req.params.id, user: req.user._id}).lean() 
+      if (booking) { res.render('houses/one', {house: house, user: req.user, booking: booking})} 
+    }
+    let newDate = moment(booking.date).format('MMMM Do YYYY, h:mm:ss a')
+    console.log(newDate)
   } catch (err) { next(err) }
 })
 
@@ -69,7 +78,15 @@ router.post('/', async (req, res, next) => {
 // PATCH /:id
 router.patch('/:id', (req, res) => {})
 // DELETE /:id
-router.delete('/:id', (req, res) => {})
+router.delete('/:id', (req, res) => {
+  if(!req.isAuthenticated()) {
+    res.redirect('/auth/login')
+  } else {
+    Houses.findByIdAndRemove(req.params.id, (err, house) => {
+      if (err) { next(err) } else { res.redirect('/houses') }
+    })
+  }
+})
 
 // export
 module.exports = router
