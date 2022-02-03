@@ -78,13 +78,13 @@ router.post('/', async (req, res, next) => {
 // PATCH /:id
 router.patch('/:id', (req, res) => {})
 // DELETE /:id
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
   if(!req.isAuthenticated()) {
     res.redirect('/auth/login')
   } else {
-    Houses.findByIdAndRemove(req.params.id, (err, house) => {
-      if (err) { next(err) } else { res.redirect('/houses') }
-    })
+    let deleteHouse = await Houses.findByIdAndDelete(req.params.id)
+    console.log(req.params.id)
+    res.redirect('/profile')
   }
 })
 
