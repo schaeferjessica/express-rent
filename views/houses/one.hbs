@@ -31,7 +31,7 @@
       </div>
       <p class="mt-5">{{ house.description }}</p>
 
-      <h2 class="mt-10">2 Reviews</h2>
+      {{!-- <h2 class="mt-10">2 Reviews</h2>
       <form action="/bookings" method="POST">
         <label for="happy">
           <input type="radio" id="happy" name="radio" value="radiobox"
@@ -50,48 +50,47 @@
           minlength="100">leave a review..</textarea>
 
         <button type="submit" class="button mt-5">Submit</button>
-      </form>
+      </form> --}}
     </div>
 
     <div class="sm:col-span-1">
       {{#if booking }}
       <div class="p-2 mt-4 border block w-full border-blue-200 rounded">
-        <h3>350$ a night</h3>
-        <small class="block">1 reviews</small>
+        <h3>{{ house.price }} a night</h3>
+        {{!-- <small class="block">1 reviews</small> --}}
         <div class="sm:col-span-1 p-2 mt-4 border block w-full bg-blue-200 rounded">
-          <span>350$ a night</span>
+          <span>{{ house.price }} a night</span>
           <span class="block">Thank you</span>
-          <time datetime="2008-02-14 20:00" class="text-xs text-gray-500">{{house.date}}</time>
+          <time datetime="{{house.date}}" class="text-xs text-gray-500">{{house.date}}</time>
         </div>
       </div>
       {{else}}
       <div class="p-2 mt-4 border block w-full border-blue-200 rounded">
         <h3>{{ house.price }}$ a night</h3>
-        <small class="block">0 reviews</small>
+        {{!-- <small class="block">0 reviews</small> --}}
         <form action="/houses/{{house._id}}" method="POST">
           <label for="message" class="sr-only">Message the Host:</label>
           <textarea name="message" id="message" class="p-2 mt-4 border block w-full border-blue-200 rounded h-28"
-            required minlength="100" type="hidden" value="{{house._id}}">message the host...</textarea>
+            required minlength="100">message the host...</textarea>
+          <input type="hidden" value="{{house._id}}">
           <button type="submit" class="button mt-5">Submit</button>
         </form>
       </div>
       {{/if}}
     </div>
 
-    <!--list: review-->
+    <!--list: booking-->
     <ul class="mt-10 sm:col-span-2">
-      {{#each reviews as |review|}}
+      {{#each bookings as |booking|}}
       <li class="mt-5 p-2 border w-full border-blue-200 rounded">
         <div class="flex items-center">
-          <img class="h-12 w-12 rounded-full" src="https://avatars.githubusercontent.com/u/53295035?v=4" alt="avatar">
+          <img class="h-12 w-12 rounded-full" src="{{booking.author.url}}" alt="avatar">
           <div class="ml-4">
-            <time datetime="2008-02-14 20:00" class="text-xs text-gray-500">{{review.date}}</time>
-            <h2>Nilin</h2>
+            <time datetime="{{booking.date}}" class="text-xs text-gray-500">{{booking.date}}</time>
+            <h2>{{booking.author.name}}</h2>
           </div>
         </div>
-        <p class="mt-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum eum officiis saepe numquam
-          doloribus quia possimus nihil exercitationem. Nesciunt nobis maiores eveniet consectetur quia distinctio aut
-          repellat quas suscipit corrupti!</p>
+        <p class="mt-2">{{booking.description}}</p>
       </li>
       {{/each}}
     </ul>

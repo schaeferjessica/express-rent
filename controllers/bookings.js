@@ -6,17 +6,24 @@ const router = express.Router()
 // Modules
 
 const Bookings = require('../models/bookings')
+const Users = require('../models/users')
 
 // Routes (views)
 
 // POST /
 router.post('/', async (req, res, next) => {
-  // create a new boooking and save it to the database
-  let booking = new Bookings(req.body)
   try {
+    if (!req.isAuthenticated()) {
+      res.redirect('/auth/login')
+    } else {
+    let booking = await Bookings.create(req.body)
+    booking.author = req.user._id
+    booking.house = req.body.house
     await booking.save()
-    res.redirect('/')
+    res.redirect('/houses/${house._id}')
+    }
   } catch (err) { next(err) }
+
 })
 
 
