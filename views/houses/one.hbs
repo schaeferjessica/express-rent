@@ -3,14 +3,14 @@
   {{> navigation }}
 
   <!--gallery-->
-  <div class="grid sm:grid-cols-2 grid-cols-1 gap-4 mt-10">
+  <div class="grid sm:grid-cols-2 grid-cols-1 gap-4 mt-10 gallery">
     <div>
-      <img class="aspect-video w-full h-full object-cover" src="{{ house.photos.[0] }}" alt="">
+      <img class="aspect-video w-full h-full object-cover gallery__image-big" src="{{ house.photos.[0] }}" alt="">
     </div>
     <ul class="grid grid-cols-3 gap-4">
       {{#each house.photos as |photo|}}
       <li>
-        <img class="aspect-video w-full object-cover" src="{{ photo }}" alt="">
+        <img class="aspect-video w-full object-cover gallery__image-small" src="{{ photo }}" alt="">
       </li>
       {{/each}}
     </ul>
